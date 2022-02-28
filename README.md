@@ -50,24 +50,37 @@ In recap perspective this script is not really used for anything to be honest, s
   Also listens to (9) Timer Behavior. If Time is up, the SelectionPhase ends. (The player only has a limited amount of time to choose the newly spawned object) Also in the script it is checked if the object the player selected is the right one or not. Depending on what the player chooses either the "End" phase will called directly or the "check" phase will be called.
   
   13. HandleCheckPhase.cs
+ This script checks if the player is "GameOver", means he has no guesses left. If he has no guesses Left the script will set the game to the End Phase. Else it starts again with the Selection Phase.
   
   14. HandleEndPhase.cs
- 
+ The EndPhase script contains a method for restarting the game. It will clear the board accordingly and hand over to the Build Phase again.
   
+  15. HandleUI.cs
+  This script handles all the UI workflows. Depending on which phase is active it sets GameObjects either active or inactive. Also it contains of functions like OpenTutorialMenu(),BackToMenu() or OpenCustomMenu().
   
-
-  4. AudioManager.cs
-  BossEnemyScript.cs
-  CameraFade.cs
+  16. SelectionManager.cs
+  This script handles the functionality of selecting objects. When left clicking an object it will be selected and highlighted accordingly. This is done by using a Physics 2D raycast to get the position of the mouse and checks if it "hits" something.
+  
+  17. AudioManager.cs
+  This script handles the audio of the game. It provides a methods to play a Sounds and Change Master Volume. Will be used by (24 VolumeSliderscript) and other scripts to Play sounds accordingly to a specific situation like Player has no lives left, Correct or wrong guess etc.
+  
+  18. GhostScript.cs
+  This script is handling the behavior of the ghost enemies, which can spawn during SleepPhase. They also check for all existing SpawnPoints which are created during the Build phase and then picking a random one. After picking a random spawn point they move to this point until they have reached it. Then they pick another one again. It contains code for the animation of the ghost, moving (selecting spawnpoints and moving there) and also a OnGhostClick() method, to Destroy the ghost if the player clicks on it. After X amount of seconds the ghost is spawned the lighting will be reduced by 0.1 from 1 to have an overall effect on the board.
     
+  19. BossEnemyScript.cs
+  This script handles the behavior of the boss. To be fair, this would have been a perfect situation to inherit from the GhostScript.cs but I was under a little bit of time pressure. Therefore I have just reused the Move method here. For the Boss I have added life and a lifeBar for the UI, so it will not die instantly like the ghosts do. Also it will reduce the lighting of the scene by 0.5 from 1. 
   
-  HandleUI.cs
-  LightFollowMouse.cs
-  LightingScript.cs
-  SelectionManager.cs
-  SpawnLocationManager.cs
-  VolumeSliderscript.cs
+  20. CameraFade.cs
+  This script handles the "Close eye" illusion on the screen during sleep phase. Based on an animation curve the overall screen will fade for a few seconds. This brings the illusion of closing and opening the eye again.
   
+  21. LightningScript.cs
+  Very simple. Sets the global light to 1.0 at the beginning of starting the game.
+  
+  22. LightFollowMouse.cs
+  I added a Point Light which is following the mouse, so a little area around the mouse is brighter than the rest. Also it acts as a kind of flashlight, if the Ghosts or the Boss darken the overall board.
+  
+  23. VolumeSliderscript.cs
+  This script handles the Volume Slider for Master Volume.
 
   
  Thank you CS50 team for the great experience during the last weeks. It was a blast! Looking forward to do your CS50 Game development course too.
