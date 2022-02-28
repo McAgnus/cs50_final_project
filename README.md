@@ -1,6 +1,8 @@
 # cs50_final_project : Unity Game: "Memorize what is -NOT- real"
 
 #### Video Demo:  <URL HERE>
+  
+Link to scripts described below: https://www.dropbox.com/s/yuway5g0sh50zoy/Scripts.zip?dl=0
 
 You can download the project here: https://www.dropbox.com/s/p8ggqjcmtcu9kpu/Memo_FinalBuild_270222.zip?dl=0
 Alternative link: https://mcagnus1337.itch.io/memorize-what-is-not-real
@@ -82,5 +84,6 @@ In recap perspective this script is not really used for anything to be honest, s
   23. VolumeSliderscript.cs
   This script handles the Volume Slider for Master Volume.
 
+  
   
  Thank you CS50 team for the great experience during the last weeks. It was a blast! Looking forward to do your CS50 Game development course too.
