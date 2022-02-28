@@ -1,6 +1,6 @@
 # cs50_final_project : Unity Game: "Memorize what is -NOT- real"
 
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/XjgiuNG-vo4>
   
 Link to scripts described below: https://www.dropbox.com/s/yuway5g0sh50zoy/Scripts.zip?dl=0
 
