@@ -33,25 +33,39 @@ In recap perspective this script is not really used for anything to be honest, s
   This script handles the LookPhase. LookPhase is very simple. In the beginning of the game you will get a few seconds to get an overview of the newly generated board. It contains of a timer. If timer is 0 or below it will Update (1 GameManager) to be in SleepPhase.
   
   8. HandleSleepPhase.cs
+  This script is also listening to the event in (1 GameManager.cs). If in SleepPhase it will Start a Timer (another script) on how long this SleepPhase will last.
+  After the timer ended (also has a event this script is listening to) this script will handle Object Spawns as well as potential Enemy and Boss spawn.
+  After this is done SelectionPhase Game state will be set.
+  
+  9. TimerBehavior.cs
+  Simple timer script. It contains a StartTimer(float time) method which is called from outside. If timer ended it will also invoke an event. All listeners will then be contacted and act. The script is also attached to an image fill for the Timer UI. It handles the "fill" of the image based on how much % of time is over. This script is getting called in SleepPhase but also in SelectionPhase, which I am describing later.
+  
+  10. Spawner.cs
+  This script takes care of the object Spawn. It contains an area of all GameObjects (Prefabs) who should spawn on the board during SleepPhase(or are already on board initaially) and spawns the objects on the board. Therefore it identifies all SpawnPoints (5) and checks if it is free in the (6) SpawnLocationManager. Therefore it counts up an object ID, so the programm is able to identify which object has spawned when..
+  
+  11. ObjectID.cs
+  Super simple script. Just contains an INT value. Each Object spawned holds this script. Therefore it can be identified. 
+  
+  12. HandleSelectionPhase.cs
+  Also listens to (9) Timer Behavior. If Time is up, the SelectionPhase ends. (The player only has a limited amount of time to choose the newly spawned object) Also in the script it is checked if the object the player selected is the right one or not. Depending on what the player chooses either the "End" phase will called directly or the "check" phase will be called.
+  
+  13. HandleCheckPhase.cs
+  
+  14. HandleEndPhase.cs
+ 
   
   
-  2. Spawner.cs
-  3. CreateSpawnPoints.cs
+
   4. AudioManager.cs
   BossEnemyScript.cs
   CameraFade.cs
-  HandleCheckPhase.cs
-  HandleEndPhase.cs
+    
   
-  HandleMainMenuPhase.cs
-  HandleSelectionPhase.cs
   HandleUI.cs
   LightFollowMouse.cs
   LightingScript.cs
-  ObjectID.cs
   SelectionManager.cs
   SpawnLocationManager.cs
-  TimerBehavior.cs
   VolumeSliderscript.cs
   
 
