@@ -23,10 +23,16 @@ Pressing start in (2 - HandleMainMenuPhase) the BuildPhase will triggered and th
 In recap perspective this script is not really used for anything to be honest, since I am doing all the invididual board building staff in other scripts...But it will call the "LookPhase" to "start" with the game (from the perspective of the player).
   
   5. CreateSpawnPoints.cs
- This script is the main script to build individual game boards, based on level or custom data the player is handing over via UI.
+ This script is the main script to build individual game boards, based on level or custom data the player is handing over via UI. Listens to (1 -GameManager.cs) event OnGameStateChange.
   It places Inner and Outter Tiles of the board and also creates the SpawnPoints, where later objects can spawn on the board. How big the board will be will be defined in a independent "Scriptable Object", which is in this case just a data container to store values. The values change depending on which level the player wants to play.
   
+  6. SpawnLocationManager.cs
+  Super simple script. 1 real LOC. Containing a bool value isFree. This script is attached to the SpawnPoints (so called Prefabs) to later check if the SpawnPoints are still free or not. If free an object will spawn there (potentially).
   
+  7. HandleLookPhase.cs
+  This script handles the LookPhase. LookPhase is very simple. In the beginning of the game you will get a few seconds to get an overview of the newly generated board. It contains of a timer. If timer is 0 or below it will Update (1 GameManager) to be in SleepPhase.
+  
+  8. HandleSleepPhase.cs
   
   
   2. Spawner.cs
@@ -36,10 +42,9 @@ In recap perspective this script is not really used for anything to be honest, s
   CameraFade.cs
   HandleCheckPhase.cs
   HandleEndPhase.cs
-  HandleLookPhase.cs
+  
   HandleMainMenuPhase.cs
   HandleSelectionPhase.cs
-  HandleSleepPhase.cs
   HandleUI.cs
   LightFollowMouse.cs
   LightingScript.cs
